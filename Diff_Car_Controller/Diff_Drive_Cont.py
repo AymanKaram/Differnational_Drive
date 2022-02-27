@@ -95,21 +95,26 @@ class robot(object):
 
 
 def main():
-   print("This is the dummy_test.py script. Nothing to do!!! \n")
-   obj = MotorController(channel='can0', bustype='socketcan_ctypes', bitrate=500000, node_ids=None, debug=True, eds_file='./eds/ZLAC8030L-V1.0.eds')
+    print("This is odom and Kinematics implementation of Diff_Drive_Cont.py script. \n")
+    network_obj = MotorController(channel='can0', bustype='socketcan_ctypes', bitrate=500000, node_ids=None, debug=True, eds_file='./eds/ZLAC8030L-V1.0.eds')
 
-   # Get some velocities
-   t1 = time.time()
-   N = 1000
-   for i in range(N):
-     vel =  obj.getVelocity(node_id)
-   #   logging.info("Curent velocity = {} rpm \n".format(vel))
-
-     obj.setVelocity(node_id=node_id, vel=i/10.)
+    ugv = robot(wheel_radius= 0.194, track_width= 0.6405, can_network = network_obj)
 
 
 
+#    # Get some velocities
+#    t1 = time.time()
+#    N = 1000
+#    for i in range(N):
+#      vel =  obj.getVelocity(node_id)
+#    #   logging.info("Curent velocity = {} rpm \n".format(vel))
+
+#      obj.setVelocity(node_id=node_id, vel=i/10.)
 
 
+
+
+if __name__=="__main__":
+    main()
 
 
